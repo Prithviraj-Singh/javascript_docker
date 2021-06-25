@@ -1,0 +1,92 @@
+<script src='functions.js'></script>
+<script>
+	var r = 11;
+        var g = 255;
+       	var b = 255;
+
+	function reset() {
+		document.body.style.backgroundColor = "#cce0ff"
+	}
+
+	function set(r,g,b) {
+		document.body.style.backgroundColor = "rgb("+r+","+g+","+b+")";
+	}
+	function anime(){
+
+		if(r > 1){
+			r = r-11;
+		}
+		else{
+			r = 204;
+		}
+		if(g > 205){
+			g = g-20;
+		}
+		else{
+			g = 224;
+		}
+		var i = setTimeout(set(r,g,b),10000000);
+
+	}
+</script>
+<style>
+	button#butt1{
+		background-image: url(download.png);
+		width: 90px;
+		height: 60px;
+		background-repeat: no-repeat;
+		background-position-x: center;
+	}
+	input#cmd{
+		height: 60px;
+	}
+	input#name{
+		height: 60px;
+		width: 220px;
+	}
+	select{
+		height: 60px;
+	}
+</style>
+
+<script>
+function inp(){
+	x = document.getElementById('cmd');
+	cmd = x.value;
+	y = document.getElementById('typ');
+	typ = y.value;
+	z = document.getElementById('sub');
+	sub = z.value;
+	a = document.getElementById('name');
+	name = a.value;
+	return [typ,sub,name,cmd];
+}
+function on(id){
+	var elem = document.getElementById(id);
+
+}
+</script>
+
+
+<select id="typ" placeholder="Image/Container">
+	<option value="image">Image</option>
+	<option value="container">Container</option>
+</select>
+
+<select id="sub" placeholder="Subcommand">
+	<option value="list">list</doption>
+	<option value="run -dit">run</doption>
+	<option value="start">start</option>
+	<option value="stop">stop</option>
+	<option value="pull">pull</option>
+	<option value="inspect">inspect</option>
+	<option value="rm">remove</option>
+	<option value="exec">execute command</option>
+</select>
+
+
+<input id='name' placeholder="image/container name(if required)"></input>
+<input id='cmd' placeholder="type your option here..."></input>
+<button id='butt1' onclick="lw('d',inp()[0],inp()[1],inp()[2],inp()[3])" onmouseover="anime()" onmouseout="reset()">click</button>
+
+<div id='d'>Output appears here</div>
